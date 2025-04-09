@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Listado de Actividades</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <script defer src="listado.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Listado de Actividades</h1>
+    <nav>
+      <a href="portada.html">Volver a la portada</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <table id="tabla-actividades">
+      <thead>
+        <tr>
+          <th>Inicio</th>
+          <th>Término</th>
+          <th>Comuna</th>
+          <th>Sector</th>
+          <th>Tema</th>
+          <th>Organizador</th>
+          <th>Total Fotos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Datos de ejemplo -->
+        <tr class="actividad" data-id="1">
+          <td>2025-03-28 12:00</td>
+          <td>2025-03-28 14:00</td>
+          <td>Santiago</td>
+          <td>Beauchef 850, terraza</td>
+          <td>Escuela de Boxeo</td>
+          <td>Juan Pérez</td>
+          <td>3</td>
+        </tr>
+        <tr class="actividad" data-id="2">
+          <td>2025-03-29 19:00</td>
+          <td>2025-03-29 20:00</td>
+          <td>Ñuñoa</td>
+          <td>Plaza Central</td>
+          <td>Cómo deshidratar fruta</td>
+          <td>Ana Soto</td>
+          <td>2</td>
+        </tr>
+        <tr class="actividad" data-id="3">
+          <td>2025-03-30 18:00</td>
+          <td></td>
+          <td>Santiago</td>
+          <td>Parque O’Higgins</td>
+          <td>Música urbana</td>
+          <td>Luis Torres</td>
+          <td>5</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <section id="detalle-actividad" class="oculto">
+    <h2>Detalle de Actividad</h2>
+    <div id="detalle-contenido"></div>
+    <button onclick="volverListado()">Volver al listado</button>
+    <a href="portada.html">Volver a la portada</a>
+  </section>
+
+  <div id="modal-imagen" class="oculto">
+    <div class="modal-contenido">
+      <img id="imagen-grande" src="" alt="Vista ampliada" width="800" height="600" />
+      <button onclick="cerrarImagen()">Cerrar</button>
+    </div>
+  </div>
+</body>
+</html>

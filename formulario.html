@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informar Actividad</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>Informar nueva actividad recreativa</h1>
+  <nav>
+    <a href="portada.html">Volver a la portada</a>
+  </nav>
+  <div id="val-box" hidden>
+    <p id="val-msg"></p>
+    <ul id="val-list"></ul>
+  </div>
+  <form id="actividad-form">
+    <!-- Información del Lugar -->
+    <fieldset>
+        <legend>¿Dónde?</legend>
+        <label for="region">Región:</label>
+        <select id="region" name="region" required>
+          <option value="">Seleccione una región</option>
+        </select><br>
+      
+        <label for="comuna">Comuna:</label>
+        <select id="comuna" name="comuna" required>
+          <option value="">Seleccione una comuna</option>
+        </select><br>
+      
+        <label for="sector">Sector:</label>
+        <input type="text" id="sector" name="sector" maxlength="100" required><br>
+      </fieldset>
+      
+      <!-- Información del Organizador -->
+      <fieldset>
+        <legend>¿Quién organiza?</legend>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" maxlength="200" required><br>
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" maxlength="100" required><br>
+      
+        <label for="celular">Número de celular:</label>
+        <input type="tel" id="celular" name="celular" placeholder="+569.12345678" required><br>
+      
+        <label for="contactar">Contactar por:</label>
+        <select id="contactar" multiple>
+          <option value="whatsapp">Whatsapp</option>
+          <option value="telegram">Telegram</option>
+          <option value="x">X</option>
+          <option value="instagram">Instagram</option>
+          <option value="tiktok">TikTok</option>
+          <option value="otra">Otra</option>
+        </select>
+        <div id="contactos"></div>
+      </fieldset>
+      
+      <!-- Información de la Actividad -->
+      <fieldset>
+        <legend>¿Cuándo y de qué trata?</legend>
+        <label for="inicio">Día y hora de inicio:</label>
+        <input type="datetime-local" id="inicio" name="inicio" required><br>
+      
+        <label for="termino">Día y hora de término:</label>
+        <input type="datetime-local" id="termino" name="termino" required><br>
+      
+        <label for="descripcion">Descripción:</label><br>
+        <textarea id="descripcion" name="descripcion" cols="50" rows="10" required></textarea><br>
+      
+        <label for="tema">Tema:</label>
+        <select id="tema" name="tema" required>
+          <option value="">Seleccione un tema</option>
+          <option value="música">Música</option>
+          <option value="deporte">Deporte</option>
+          <option value="ciencias">Ciencias</option>
+          <option value="religión">Religión</option>
+          <option value="política">Política</option>
+          <option value="tecnología">Tecnología</option>
+          <option value="juegos">Juegos</option>
+          <option value="baile">Baile</option>
+          <option value="comida">Comida</option>
+          <option value="otro">Otro</option>
+        </select>
+        <div id="otro-tema-div"></div>
+      
+        <label>Fotos:</label>
+        <div id="fotos">
+          <input type="file" name="foto" required><br>
+        </div>
+        <button type="button" id="agregar-foto">Agregar otra foto</button>
+      </fieldset>
+      
+
+    <button type="submit">Agregar esta actividad</button>
+    <div id="errores" style="color: red; margin-top: 10px;"></div>
+
+  </form>
+
+  <div id="confirmacion" style="display: none;">
+    <p>¿Está seguro que desea agregar esta actividad?</p>
+    <button id="confirmar">Sí, estoy seguro</button>
+    <button id="cancelar">No, quiero volver al formulario</button>
+  </div>
+
+  <div id="mensaje-final" style="display: none;">
+    <p>Hemos recibido su información, muchas gracias y suerte en su actividad.</p>
+    <a href="portada.html">Volver a la portada</a>
+  </div>
+
+  <script src="formulario.js"></script>
+  <script src="select.js"></script>
+
+</body>
+</html>
