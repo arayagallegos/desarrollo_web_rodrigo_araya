@@ -1,5 +1,5 @@
 ¡Hola, qué tal!
-Corriendo con flask run o con python.py debería salir todo bien. Instalé cryptography, y creo que nada más.
+Corriendo con flask run o con python app.py debería salir todo bien. Instalé cryptography, y creo que nada más.
 Hay un init_db para iniciar todo la base de datos. Ocupé Edge para ir revisando como iba quedando, no probé en otro navegador.
 
 Para seleccionar más de una opción en los campos como "tema" o "Contactar por" hay que hacerlo apretando Ctrl + click izq.
