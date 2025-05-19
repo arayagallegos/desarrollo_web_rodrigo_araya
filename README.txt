@@ -8,3 +8,6 @@ Cuando uno hace click sobre una actividad dentro del listado de actividades, tir
 info específica. No alcancé a solucionarlo para que quedara más limpio.
 Nuevamente, por temas de tiempo no toqué nada de estadísticas, ni le agregué imágenes. No me descuenten por eso UnU. 
 
+
+Me di cuenta que lo probé en un venv que estaba lleno de basura de otro curso ups, perdón.
+
