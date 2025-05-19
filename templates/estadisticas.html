@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Estadísticas{% endblock %}
+{% block content %}
+<h1>Estadísticas</h1>
+<section class="grafico">
+  <h2>Actividades por Día</h2>
+  <img src="{{ url_for('static', filename='img/grafico_lineas.png') }}" alt="Gráfico de líneas">
+</section>
+<section class="grafico">
+  <h2>Por Tipo de Actividad</h2>
+  <img src="{{ url_for('static', filename='img/grafico_torta.png') }}" alt="Gráfico de torta">
+</section>
+<section class="grafico">
+  <h2>Por Horario</h2>
+  <img src="{{ url_for('static', filename='img/grafico_barras.png') }}" alt="Gráfico de barras">
+</section>
+{% endblock %}

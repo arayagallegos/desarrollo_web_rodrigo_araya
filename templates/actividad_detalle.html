@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Detalle Actividad{% endblock %}
+{% block content %}
+<h1>Detalle de Actividad</h1>
+
+<p><strong>Nombre:</strong> {{ actividad.nombre }}</p>
+<p><strong>Email:</strong> {{ actividad.email }}</p>
+<p><strong>Celular:</strong> {{ actividad.celular or 'No disponible' }}</p>
+<p><strong>Inicio:</strong> {{ actividad.dia_hora_inicio.strftime('%d-%m-%Y %H:%M') }}</p>
+<p><strong>Término:</strong> {{ actividad.dia_hora_termino.strftime('%d-%m-%Y %H:%M') if actividad.dia_hora_termino else 'No especificado' }}</p>
+<p><strong>Descripción:</strong> {{ actividad.descripcion }}</p>
+<p><strong>Comuna:</strong> {{ actividad.comuna.nombre }}</p>
+<p><strong>Sector:</strong> {{ actividad.sector or 'No especificado' }}</p>
+<p><strong>Temas:</strong> 
+  {% for t in actividad.temas %}
+    {{ t.tema }}{% if t.tema == 'otro' and t.glosa_otro %} ({{ t.glosa_otro }}){% endif %}
+    {% if not loop.last %}, {% endif %}
+  {% endfor %}
+</p>
+<p><strong>Contactos:</strong>
+  {% for c in actividad.contactos %}
+    {{ c.nombre }}: {{ c.identificador }}{% if not loop.last %}, {% endif %}
+  {% endfor %}
+</p>
+<p><strong>Fotos:</strong></p>
+<div>
+  {% if actividad.fotos %}
+    {% for f in actividad.fotos %}
+      <img src="{{ url_for('static', filename=f.ruta_archivo) }}" width="150" style="margin-right:10px;" />
+    {% endfor %}
+  {% else %}
+    Sin imágenes
+  {% endif %}
+</div>
+
+<p><a href="{{ url_for('listado') }}">← Volver al listado</a></p>
+
+{% endblock %}

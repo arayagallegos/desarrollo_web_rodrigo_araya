@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}Formulario{% endblock %}
+{% block content %}
+<h1>Agregar Actividad</h1>
+<form action="{{ url_for('agregar') }}" method="post" enctype="multipart/form-data" id="actividad-form">
+  <fieldset>
+    <legend>¿Dónde?</legend>
+    <label>Región:</label>
+    <select id="region" name="region" required>
+      <option value="">Seleccione una región</option>
+      {% for reg in regiones %}
+        <option value="{{ reg.id }}">{{ reg.nombre }}</option>
+      {% endfor %}
+    </select><br>
+    <label>Comuna:</label>
+    <select id="comuna" name="comuna" required>
+      <option value="">Seleccione una comuna</option>
+    </select><br>
+    <label>Sector:</label>
+    <input type="text" name="sector"><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>¿Quién organiza?</legend>
+    <label>Nombre:</label>
+    <input type="text" name="nombre" maxlength="200" required><br>
+    <label>Email:</label>
+    <input type="email" name="email" maxlength="100" required><br>
+    <label>Celular:</label>
+    <input type="tel" name="celular" placeholder="+569.12345678"><br>
+    <label>Contactar por:</label>
+    <select name="contactar_por" id="contactar" multiple>
+      <option value="whatsapp">Whatsapp</option>
+      <option value="telegram">Telegram</option>
+      <option value="x">X</option>
+      <option value="instagram">Instagram</option>
+      <option value="tiktok">TikTok</option>
+      <option value="otra">Otra</option>
+    </select>
+    <div id="contactos"></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>¿Cuándo y de qué trata?</legend>
+    <label>Inicio:</label>
+    <input type="datetime-local" name="inicio" id="inicio" required><br>
+    <label>Término:</label>
+    <input type="datetime-local" name="termino" id="termino"><br>
+    <label>Descripción:</label>
+    <textarea name="descripcion" cols="50" rows="10" required></textarea><br>
+    <label>Tema:</label>
+    <select name="tema" id="tema" multiple required>
+      <option value="">Seleccione</option>
+      <option value="música">Música</option>
+      <option value="deporte">Deporte</option>
+      <option value="ciencias">Ciencias</option>
+      <option value="religión">Religión</option>
+      <option value="política">Política</option>
+      <option value="tecnología">Tecnología</option>
+      <option value="juegos">Juegos</option>
+      <option value="baile">Baile</option>
+      <option value="comida">Comida</option>
+      <option value="otro">Otro</option>
+    </select>
+    <div id="otro-tema-div" style="margin-top: 10px;"></div>
+    <br>
+    <label>Fotos:</label>
+    <div id="fotos">
+      <input type="file" name="foto" accept="image/*"><br>
+    </div>
+    <button type="button" id="agregar-foto">Agregar otra foto</button>
+  </fieldset>
+
+  <button type="submit">Agregar esta actividad</button>
+</form>
+<script src="{{ url_for('static', filename='js/formulario.js') }}"></script>
+<script src="{{ url_for('static', filename='js/select.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Listado{% endblock %}
+{% block content %}
+<h1>Listado de Actividades</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Inicio</th><th>Término</th><th>Comuna</th><th>Sector</th><th>Tema</th><th>Organizador</th><th>Fotos</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for a in actividades %}
+  <tr onclick="window.location.href='{{ url_for('actividad_detalle', id=a.id) }}'" style="cursor:pointer;">
+    <td>{{ a.dia_hora_inicio }}</td>
+    <td>{{ a.dia_hora_termino}}</td>
+    <td>{{ a.comuna.nombre }}</td>
+    <td>{{ a.sector }}</td>
+    <td>
+      {% for t in a.temas %}
+        {{ t.tema }}{% if t.tema == 'otro' and t.glosa_otro %} ({{ t.glosa_otro }}){% endif %}
+        {% if not loop.last %}, {% endif %}
+      {% endfor %}
+    </td>
+    <td>{{ a.nombre }}</td>
+    <td>
+      {% if a.fotos %}
+        <img src="{{ url_for('static', filename=a.fotos[0].ruta_archivo) }}" alt="Foto" width="80" />
+      {% else %}
+        Sin imagen
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+
+  <div id="detalle-actividad" style="display:none;">
+  <div id="detalle-contenido"></div>
+</div>
+</tbody>
+</table>
+
+<div>
+  {% if pagina > 1 %}
+    <a href="{{ url_for('listado', pagina=pagina-1) }}">Anterior</a>
+  {% endif %}
+  
+  Página {{ pagina }} de {{ paginas }}
+  
+  {% if pagina < paginas %}
+    <a href="{{ url_for('listado', pagina=pagina+1) }}">Siguiente</a>
+  {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='js/listado.js') }}"></script>
+
+
+{% endblock %}
