@@ -8,3 +8,12 @@ Cuando uno hace click sobre una actividad dentro del listado de actividades, tir
 info específica. No alcancé a solucionarlo para que quedara más limpio.
 Nuevamente, por temas de tiempo no toqué nada de estadísticas, ni le agregué imágenes. No me descuenten por eso UnU. 
 
+
+Actualización tarea 3:
+Se agregó los comentarios en los post y se agregaron los gráficos con highchart. Se actualiza la base de datos con la 
+info de ambas cosas y se hacen las validaciones en el front como en el backend.
+No pude corregir el mismo error que lanza cuando uno clickea sobre una actividad para ver el detalle.
+Sigo sin agregarle estilo a mi página.
+Agregué validaciones faltantes.
+Lo demás se mantiene tal cual.
+Ah, me lanza un error el VSCode en listado.html, pero no entendí por qué era. La aplicación funciona igual al correrla.

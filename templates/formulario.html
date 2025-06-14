@@ -76,3 +76,13 @@
 <script src="{{ url_for('static', filename='js/formulario.js') }}"></script>
 <script src="{{ url_for('static', filename='js/select.js') }}"></script>
 {% endblock %}
+
+{% if errores %}
+<div class="errores">
+  <ul>
+    {% for error in errores %}
+      <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

@@ -2,16 +2,22 @@
 {% block title %}Estadísticas{% endblock %}
 {% block content %}
 <h1>Estadísticas</h1>
-<section class="grafico">
+
+<section>
   <h2>Actividades por Día</h2>
-  <img src="{{ url_for('static', filename='img/grafico_lineas.png') }}" alt="Gráfico de líneas">
+  <div id="grafico-lineas" style="height: 400px;"></div>
 </section>
-<section class="grafico">
-  <h2>Por Tipo de Actividad</h2>
-  <img src="{{ url_for('static', filename='img/grafico_torta.png') }}" alt="Gráfico de torta">
+<section>
+  <h2>Actividades por Tipo</h2>
+  <div id="grafico-torta" style="height: 400px;"></div>
 </section>
-<section class="grafico">
-  <h2>Por Horario</h2>
-  <img src="{{ url_for('static', filename='img/grafico_barras.png') }}" alt="Gráfico de barras">
+<section>
+  <h2>Actividades por Horario (por mes)</h2>
+  <div id="grafico-barras" style="height: 400px;"></div>
 </section>
+
+<p><a href="{{ url_for('portada') }}">&larr; Volver a la portada</a></p>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="{{ url_for('static', filename='js/estadisticas.js') }}"></script>
 {% endblock %}

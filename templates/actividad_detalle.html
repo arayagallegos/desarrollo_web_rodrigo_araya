@@ -33,6 +33,64 @@
   {% endif %}
 </div>
 
-<p><a href="{{ url_for('listado') }}">← Volver al listado</a></p>
+<hr>
 
+<h2>Comentarios</h2>
+<div id="comentarios-lista"></div>
+
+<h3>Agregar Comentario</h3>
+<form id="form-comentario">
+  <input type="text" name="nombre" id="nombre" placeholder="Tu nombre o nick" required minlength="3" maxlength="80">
+  <br><br>
+  <textarea name="texto" id="texto" rows="4" cols="50" placeholder="Escribe tu comentario aquí!!!" required minlength="5"></textarea>
+  <br><br>
+  <button type="submit">Agregar comentario</button>
+  <p id="comentario-error" style="color:red;"></p>
+</form>
+
+<p><a href="{{ url_for('listado') }}">&larr; Volver al listado</a></p>
+
+<script>
+const actividadId = parseInt("{{ actividad.id }}");
+
+function cargarComentarios() {
+  fetch(`/api/actividad/${actividadId}/comentarios`)
+    .then(res => res.json())
+    .then(data => {
+      const lista = document.getElementById("comentarios-lista");
+      if (data.length === 0) return lista.innerHTML = '<p>No hay comentarios... por ahora.</p>';
+      lista.innerHTML = data.map(c => `<p><strong>${c.nombre}</strong> (${c.fecha}):<br>${c.texto}</p>`).join("<hr>");
+    });
+}
+
+document.getElementById("form-comentario").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const nombre = document.getElementById("nombre").value.trim();
+  const texto = document.getElementById("texto").value.trim();
+  const error = document.getElementById("comentario-error");
+  error.textContent = "";
+
+  if (nombre.length < 3 || nombre.length > 80 || texto.length < 5) {
+    error.textContent = "Nombre o texto no cumplen las validaciones.";
+    return;
+  }
+
+  fetch(`/api/actividad/${actividadId}/comentarios`, {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nombre, texto })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "ok") {
+      document.getElementById("form-comentario").reset();
+      cargarComentarios();
+    } else {
+      error.textContent = data.error;
+    }
+  });
+});
+
+cargarComentarios();
+</script>
 {% endblock %}

@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
     fotosDiv.appendChild(document.createElement("br"));
   });
 
-  // Contactar por: genera inputs por cada opción seleccionada
+  //Contactar por: genera inputs por cada opción seleccionada
   contactoSelect.addEventListener("change", () => {
     contactosContainer.innerHTML = "";
     const seleccionados = Array.from(contactoSelect.selectedOptions).map(o => o.value);
@@ -70,7 +70,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Validación al enviar
+  // Validación al enviar form
   formulario.addEventListener("submit", (e) => {
     const errores = [];
 
@@ -94,16 +94,16 @@ window.addEventListener("DOMContentLoaded", () => {
     const emailRegex = /^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
     if (!emailRegex.test(email) || email.length <= 15) errores.push("Email");
 
-    // Celular (opcional)
+    //Celular 
     if (celular) {
       const phoneRegex = /^\+\d{3}\.\d{8}$/;
       if (!phoneRegex.test(celular) || celular.length < 12) errores.push("Celular");
     }
 
-    // Sector (opcional)
+    // Sector
     if (sector && (sector.length < 5 || sector.length > 100)) errores.push("Sector");
 
-    // Región y comuna (obligatorias)
+    // Región y comuna
     if (!region) errores.push("Región");
     if (!comuna) errores.push("Comuna");
 

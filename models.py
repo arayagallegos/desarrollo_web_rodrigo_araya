@@ -1,4 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
 
 db = SQLAlchemy()
 
@@ -56,3 +58,13 @@ class ContactarPor(db.Model):
         name='contacto_enum'), nullable=False)
     identificador = db.Column(db.String(150), nullable=False)
     actividad_id = db.Column(db.Integer, db.ForeignKey('actividad.id'), nullable=False)
+
+class Comentario(db.Model):
+    __tablename__ = 'comentario'
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(80), nullable=False)
+    texto = db.Column(db.String(300), nullable=False)
+    fecha = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    actividad_id = db.Column(db.Integer, db.ForeignKey('actividad.id'), nullable=False)
+
+    actividad = db.relationship('Actividad', backref=db.backref('comentarios', lazy=True))
